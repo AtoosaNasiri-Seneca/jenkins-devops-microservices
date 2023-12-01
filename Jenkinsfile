@@ -22,4 +22,24 @@ pipeline {
             }
         }
     }
+	stages {
+		stage('Example2') {
+            environment {
+                DEBUG_FLAGS = '-g'
+            }
+            steps {
+                sh 'printenv'
+            }
+        }
+    }
+    stages {
+        stage('Example3') {
+            environment {
+                DEBUG_FLAGS = '-g'
+            }
+            steps {
+                sh 'printenv'
+            }
+        }
+    }
 }
