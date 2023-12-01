@@ -21,21 +21,17 @@ pipeline {
                 sh 'printenv'
             }
         }
-    }
-	stages {
 		stage('Example2') {
             environment {
-                DEBUG_FLAGS = '-g'
+                DEBUG_FLAGS2 = '-g'
             }
             steps {
                 sh 'printenv'
             }
         }
-    }
-    stages {
         stage('Example3') {
             environment {
-                DEBUG_FLAGS = '-g'
+                DEBUG_FLAGS3 = '-g'
             }
             steps {
                 sh 'printenv'
