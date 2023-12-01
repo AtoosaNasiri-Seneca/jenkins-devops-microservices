@@ -1,40 +1,9 @@
 pipeline {
-    agent any 
-    environment {
-        // Using returnStdout
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}""" 
-        // Using returnStatus
-        EXIT_STATUS = """${sh(
-                returnStatus: true,
-                script: 'exit 1'
-            )}"""
-    }
+    agent { docker 'maven:3.9.3-eclipse-temurin-17' }
     stages {
-        stage('Example') {
-            environment {
-                DEBUG_FLAGS = '-g'
-            }
+        stage('Example Build') {
             steps {
-                sh 'printenv'
-            }
-        }
-		stage('Example2') {
-            environment {
-                DEBUG_FLAGS2 = '-g'
-            }
-            steps {
-                sh 'printenv'
-            }
-        }
-        stage('Example3') {
-            environment {
-                DEBUG_FLAGS3 = '-g'
-            }
-            steps {
-                sh 'printenv'
+                sh 'mvn -B clean verify'
             }
         }
     }
