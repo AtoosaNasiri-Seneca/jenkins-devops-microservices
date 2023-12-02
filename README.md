@@ -5,3 +5,8 @@
 ```bash
 curl --user atoosa:Codered2015 -X POST -F "jenkinsfile=<Jenkinsfile" http://localhost:8081/pipeline-model-converter/validate
 ```
+
+```bash
+docker network create jenkins
+```
+
