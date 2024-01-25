@@ -6,6 +6,20 @@ on:
     # Publish semver tags as releases.
     tags: [ 'simple_workflow_v*.*.*' ]
     
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Name of the person running the job'
+        # Default value if no value is explicitly provided
+        default: 'AtoosaNasiri-Seneca'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+    
 jobs:
   greeting:
     runs-on: ubuntu-latest
