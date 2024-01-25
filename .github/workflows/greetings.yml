@@ -3,7 +3,7 @@ name: Greetings
 on: 
 # [pull_request_target, issues]
   push:
-    branches: [ "main" ]
+    # branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'simple_workflow_v*.*.*' ]
     
