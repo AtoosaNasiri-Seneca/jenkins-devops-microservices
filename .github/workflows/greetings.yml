@@ -1,4 +1,5 @@
 name: Greetings
+run-name: ${{ github.actor }} is learning GitHub Actions
 
 on: 
   push:
@@ -19,8 +20,17 @@ on:
         required: true
         # The data type of the input
         type: string
-    
+
 jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve secret
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
+        run: |
+          example-command "$super_secret"
+
   greeting:
     runs-on: ubuntu-latest
     permissions:
