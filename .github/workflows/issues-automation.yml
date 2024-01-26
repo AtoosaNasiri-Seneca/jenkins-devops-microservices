@@ -2,7 +2,7 @@ name: new-issue-automation
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, labeled, closed]
     
 jobs:
   move-new-issues-to-backlog-now:
@@ -33,3 +33,19 @@ jobs:
           # have to use a Personal GitHub Token. See more information:
           # https://github.com/alex-page/github-project-automation-plus#personal-access-token
           repo-token: ${{ secrets.PROJECT_AUTOMATION_PLUS_TOKEN }}
+  add-comment:
+    if: github.event.label.name == 'P0'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            This issue is available for anyone to work on.
+            **Make sure to reference this issue in your pull request.**
+            :sparkles: Thank you for your contribution! :sparkles:
