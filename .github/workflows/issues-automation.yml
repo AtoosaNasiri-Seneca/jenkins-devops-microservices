@@ -7,7 +7,7 @@ on:
 jobs:
   move-new-issues-to-backlog-now:
     # We not want to move P0 issues to the backlog column
-    if: ${{ !contains(github.event.issue.labels.*.name, 'P0') }}
+    if: ${{ contains(github.event.issue.labels.*.name, 'P0') }}
     runs-on: ubuntu-latest
     env:
       BOARD_NAME: "borad-my_board"
