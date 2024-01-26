@@ -2,15 +2,15 @@ name: new-issue-automation
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, labeled, closed]
     
 jobs:
   move-new-issues-to-backlog-now:
     # We not want to move P0 issues to the backlog column
-    if: ${{ !contains(github.event.issue.labels.*.name, 'P0') }}
+    if: ${{ contains(github.event.issue.labels.*.name, 'P0') }}
     runs-on: ubuntu-latest
     env:
-      BOARD_NAME: "Board"
+      BOARD_NAME: "borad-my-board"
       OWNER: ${{ github.repository_owner }}
       REPO: ${{ github.event.repository.name }}
       ISSUE: ${{ github.event.issue.number }}
@@ -28,8 +28,24 @@ jobs:
         if: ${{ env.ALREADY_IN_BOARD == 'false' }}
         with:
           project: ${{ env.BOARD_NAME }}
-          column: "Backlog"
+          column: "Todo"
           # The normal GITHUB_TOKEN can not be used inside a private repo. So we
           # have to use a Personal GitHub Token. See more information:
           # https://github.com/alex-page/github-project-automation-plus#personal-access-token
-          repo-token: ${{ secrets.PROJECT_AUTOMATION_PLUS_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  add-comment:
+    if: github.event.label.name == 'P0'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            This issue is available for anyone to work on.
+            **Make sure to reference this issue in your pull request.**
+            :sparkles: Thank you for your contribution! :sparkles:
