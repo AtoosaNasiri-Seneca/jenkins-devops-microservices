@@ -22,6 +22,10 @@ on:
         type: string
 
 jobs:
+  defaults:
+      run:
+        working-directory: ./scripts
+
   example-job:
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +34,22 @@ jobs:
           super_secret: ${{ secrets.SUPERSECRET }}
         run: |
           echo "$super_secret"
+      - name: Use Variables
+        env:
+         TARGET_COURSE: "cSP451"
+         OPRIONAl_COURSE: "CAA900"
+        run: |
+          echo "This is the first variable $env.TARGET_COURSE"
+          echo
+        
+      
+      - name: Check out the repository to the runner
+        uses: actions/checkout@v4  
+      - name: Run a script
+        run: ./my-script.sh
+      - name: Run another script
+        run: ./my-other-script.sh
+        
 
   greeting:
     runs-on: ubuntu-latest
