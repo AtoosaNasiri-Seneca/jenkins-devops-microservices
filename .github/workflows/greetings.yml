@@ -46,7 +46,7 @@ jobs:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4  
       - name: Run CSP451 Logo script
-        run: ./csp451.sh
+        run: ./csp451_logo.sh
       - name: Run CAA900 Logo script
         run: ./caa900_logo.sh
 
