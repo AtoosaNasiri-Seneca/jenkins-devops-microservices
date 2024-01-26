@@ -10,7 +10,7 @@ jobs:
     if: ${{ !contains(github.event.issue.labels.*.name, 'P0') }}
     runs-on: ubuntu-latest
     env:
-      BOARD_NAME: "Board"
+      BOARD_NAME: "borad-my_board"
       OWNER: ${{ github.repository_owner }}
       REPO: ${{ github.event.repository.name }}
       ISSUE: ${{ github.event.issue.number }}

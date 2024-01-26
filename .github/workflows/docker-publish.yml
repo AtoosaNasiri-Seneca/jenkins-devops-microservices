@@ -9,7 +9,7 @@ on:
   # schedule:
   #   - cron: '25 18 * * *'
   push:
-    $ branches: [ "main" ]
+    # branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'docker_deploy_v*.*.*' ]
   # pull_request:
