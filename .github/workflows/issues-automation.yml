@@ -32,7 +32,7 @@ jobs:
           # The normal GITHUB_TOKEN can not be used inside a private repo. So we
           # have to use a Personal GitHub Token. See more information:
           # https://github.com/alex-page/github-project-automation-plus#personal-access-token
-          repo-token: ${{ secrets.PROJECT_AUTOMATION_PLUS_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
   add-comment:
     if: github.event.label.name == 'P0'
     runs-on: ubuntu-latest
