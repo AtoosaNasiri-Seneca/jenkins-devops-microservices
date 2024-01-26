@@ -10,7 +10,7 @@ jobs:
     if: ${{ contains(github.event.issue.labels.*.name, 'P0') }}
     runs-on: ubuntu-latest
     env:
-      BOARD_NAME: "borad-my_board"
+      BOARD_NAME: "borad-my-board"
       OWNER: ${{ github.repository_owner }}
       REPO: ${{ github.event.repository.name }}
       ISSUE: ${{ github.event.issue.number }}
@@ -28,7 +28,7 @@ jobs:
         if: ${{ env.ALREADY_IN_BOARD == 'false' }}
         with:
           project: ${{ env.BOARD_NAME }}
-          column: "Backlog"
+          column: "Todo"
           # The normal GITHUB_TOKEN can not be used inside a private repo. So we
           # have to use a Personal GitHub Token. See more information:
           # https://github.com/alex-page/github-project-automation-plus#personal-access-token
