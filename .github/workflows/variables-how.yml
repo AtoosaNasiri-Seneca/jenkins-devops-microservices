@@ -1,0 +1,44 @@
+name: Experiment Variables
+
+on:
+    push:
+        branches:
+            - main
+            - dev-workflows
+    workflow_dispatch:
+        inputs:
+            Who-to-Greet:
+                description: 'my inputs'
+                required: true
+                default: 'my default value'
+                type: string
+env:
+    my-env-variable: ${{ vars.ENV_CONTEXT_VAR }}
+
+jobs:
+    display-variables:
+        name: ${{ vars.JOB_NAME }}
+        if: ${{ vars.USE_VARIABLES == 'true' }}
+        runs-on: ubuntu-latest
+        environment: ${{ vars.ENVIROMENT_STAGE }}
+        steps:
+            - name: Use Variables1
+              run: |
+               echo "repository variable : $REPOSITORY_VAR"
+               echo "organizatin variable : $ORGANIZATION_VAR"
+               echo "overridden variavle : $OVERIDDEN_VAR"
+               echo "variable frlm shell environment : $my-env-variable"
+              env:
+               REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
+               ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
+               OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
+            - name: ${{ vars.HELLo_WORLD_STEP }}
+              if: ${{ vars.HELLo_WORLD_STEP == 'true' }}
+              uses: actions/hello-world-javascrcipt-action@main
+              with:
+                who-to-greet: ${{ vars.GREET_NAME }}
+            - name: Greet on Manual Disparch
+              if: ${{ vars.GITHUB_EVENT_NAME == 'workflow_dispatch' }}
+              uses: actions/hello-world-javascrcipt-action@main
+              with:
+                who-to-greet: $input.Who-to-Greet
