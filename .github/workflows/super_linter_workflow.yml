@@ -24,7 +24,7 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Validate YAML Schema
+      # - name: Validate YAML Schema
       #   uses: nwisbeta/validate-yaml-schema@v1.0.3
       #   with:
       #     yamlSchemasJson: |
