@@ -36,15 +36,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  
-name: new-issue-automation
-
-on:
-  issues:
-    types: [opened, edited, labeled, closed]
- 
-
-  example-job:
+  Example-Job:
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve secret
