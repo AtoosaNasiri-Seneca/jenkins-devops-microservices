@@ -30,7 +30,6 @@ jobs:
         run: |
           echo "This is a sample action"
           echo : ${{ env.SAMPLE_ENV_VAR }}
-          chmod +x ./scripts/caa900_logo.sh
           ./scripts/caa900_logo.sh
       - name: Validate YAML Schema
         uses: nwisbeta/validate-yaml-schema@v1.0.3
