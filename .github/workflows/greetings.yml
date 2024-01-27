@@ -37,18 +37,12 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
   
-  Explore-Running-Scripts:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./scripts
-    steps:
-      - name: Check out the repository to the runner
-        uses: actions/checkout@v4  
-      - name: Run CSP451 Logo script
-        run: ./csp451_logo.sh
-      - name: Run CAA900 Logo script
-        run: ./caa900_logo.sh
+name: new-issue-automation
+
+on:
+  issues:
+    types: [opened, edited, labeled, closed]
+ 
 
   example-job:
     runs-on: ubuntu-latest

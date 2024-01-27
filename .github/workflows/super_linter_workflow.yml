@@ -1,0 +1,56 @@
+name: new-issue-automation
+
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  SAMPLE_ENV_VAR: "This is a sample env var"
+
+
+  # issues:
+  #   types: [opened, edited, labeled, closed]
+ 
+jobs:
+  super-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Super-Linter
+        uses: github/super-linter@v4.9.5
+        run: |
+          echo "This is a sample run command"
+          echo "This is another sample run command"
+          echo $SAMPLE_ENV_VAR
+        env:
+           DEFAULT_BRANCH: main
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate YAML Schema
+        uses: nwisbeta/validate-yaml-schema@v1.0.3
+        with:
+          yamlSchemasJson: |
+            {
+                "http://json.schemastore.org/composer": ["/*"],
+                "file:///home/johnd/some-schema.json": ["some.yaml"],
+                "../relative/path/schema.json": ["/config*.yaml"],
+                "/Users/johnd/some-schema.json": ["some.yaml"],
+            }
+      - name: Checkout code
+        uses: actions/checkout@v2
+                       
+
+# Path: seneca/jenkins-devops-microservices/.github/labeler.yml
+# This is a basic configuration file with a single label
+# that will be applied to all issues and pull requests.
+# For more information, see
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler.yml
