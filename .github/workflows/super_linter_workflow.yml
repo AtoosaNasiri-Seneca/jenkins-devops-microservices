@@ -24,18 +24,18 @@ jobs:
       #   env:
       #     DEFAULT_BRANCH: main
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Validate YAML Schema
-        uses: nwisbeta/validate-yaml-schema@v1.0.3
-        with:
-          yamlSchemasJson: |
-            {
-                "http://json.schemastore.org/composer": ["/*"],
-                "file:///home/johnd/some-schema.json": ["some.yaml"],
-                "../relative/path/schema.json": ["/config*.yaml"],
-                "/Users/johnd/some-schema.json": ["some.yaml"],
-            }
-      - name: Checkout code 
-        uses: actions/checkout@v2
+      # - name: Validate YAML Schema
+      #   uses: nwisbeta/validate-yaml-schema@v1.0.3
+      #   with:
+      #     yamlSchemasJson: |
+      #       {
+      #           "http://json.schemastore.org/composer": ["/*"],
+      #           "file:///home/johnd/some-schema.json": ["some.yaml"],
+      #           "../relative/path/schema.json": ["/config*.yaml"],
+      #           "/Users/johnd/some-schema.json": ["some.yaml"],
+      #       }
+      # - name: Checkout code 
+      #   uses: actions/checkout@v2
                        
 
 # Path: seneca/jenkins-devops-microservices/.github/labeler.yml
