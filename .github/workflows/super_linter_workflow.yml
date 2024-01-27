@@ -6,6 +6,11 @@ on:
     branches:
     - main
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./scripts
+
 env:
   SAMPLE_ENV_VAR: "This is a sample env var"
  
@@ -13,13 +18,20 @@ jobs:
   super-linter:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Retrieve secret
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
         run: |
-         echo "This is a sample action"
-         echo : ${{ env.SAMPLE_ENV_VAR }}
-         chmod +x ./scripts/caa900_logo.sh
-         ./scripts/caa900_logo.sh
+          echo "$super_secret"
+      - name: Checkout code
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
+        run: |
+          echo "This is a sample action"
+          echo : ${{ env.SAMPLE_ENV_VAR }}
+          chmod +x ./scripts/caa900_logo.sh
+          ./scripts/caa900_logo.sh
       - name: Validate YAML Schema
         uses: nwisbeta/validate-yaml-schema@v1.0.3
         with:
@@ -30,10 +42,6 @@ jobs:
                 "../relative/path/schema.json": ["/config*.yaml"],
                 "/Users/johnd/some-schema.json": ["some.yaml"],
             }
-      - name: Checkout code 
-        uses: actions/checkout@v2
-                       
-
 # Path: seneca/jenkins-devops-microservices/.github/labeler.yml
 # This is a basic configuration file with a single label
 # that will be applied to all issues and pull requests.
