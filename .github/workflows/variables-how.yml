@@ -47,7 +47,7 @@ jobs:
                 who-to-greet: ${{ vars.GREET_NAME }}
     experiment-context:
         name: ${{ vars.JOB_NAME }}
-        if: ${{ vars.GITHUB_EVENT_NAME == 'push' }}
+        if: ${{ github.event_name == 'push' }}
         runs-on: ubuntu-latest
         steps:
             - name: Use Variables2
