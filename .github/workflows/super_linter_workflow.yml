@@ -50,11 +50,19 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/labeler@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: CAA900 Logo
+      - name: Retrieve secret
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
+        run: |
+          echo "$super_secret"
+      - name: Run Scripts
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
         run: |
           echo "This is a sample action"
-          ./csp451_logo.sh
+          echo " This is super secrett, I do not think it will display ${{ env.super_secret }}"
+          ./caa900_logo.sh
