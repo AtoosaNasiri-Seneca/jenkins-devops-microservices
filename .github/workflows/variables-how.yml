@@ -14,7 +14,7 @@ on:
                 type: string
 env:
     my-env-variable: ${{ vars.ENV_CONTEXT_VAR }}
-    First-var: "Codespace Viraspace"
+    First_var: "Codespace Viraspace"
 
 jobs:
     display-variables:
@@ -28,8 +28,8 @@ jobs:
                echo "organizatin variable : $ORGANIZATION_VAR"
                echo "overridden variavle : $OVERIDDEN_VAR"
                echo "variable frlm shell environment : $my-env-variable"
-               echo "runner variable direct reference: $First-var"
-               echo "context referencing ${{ env.First-var}}"
+               echo "runner variable direct reference: $First_var"
+               echo "context referencing ${{ env.First_var}}"
               env:
                REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
                ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
