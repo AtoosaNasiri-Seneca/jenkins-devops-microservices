@@ -25,27 +25,22 @@ jobs:
         steps:
             - name: Use Variables1
               run: | 
-               echo " running job ${{ vars.JOB_NAME }}"
-               echo "repository variable : $REPOSITORY_VAR"
-               echo "organizatin variable : $ORGANIZATION_VAR"
-               echo "overridden variavle : $OVERIDDEN_VAR"
-               echo "variable from shell environment : ${{ env.my-env-variable }}"
-               echo "runner variable direct reference: $First_var"
-               echo "context referencing ${{ env.First_var}}"
+                    echo " running job ${{ vars.JOB_NAME }}"
+                    echo "repository variable : $REPOSITORY_VAR"
+                    echo "organizatin variable : $ORGANIZATION_VAR"
+                    echo "overridden variavle : $OVERIDDEN_VAR"
+                    echo "variable from shell environment : ${{ env.my-env-variable }}"
+                    echo "runner variable direct reference: $First_var"
+                    echo "context referencing ${{ env.First_var}}"
+                    echo "The name of the event that triggered the workflow  ${{ vars.GITHUB_EVENT_NAME}}"
               env:
-               REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
-               ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
-               OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
-               REPO_NAME: ${{ vars.GITHUB_REPOSITORY }}
+                    REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
+                    ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
+                    OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
+                    REPO_NAME: ${{ vars.GITHUB_REPOSITORY }}
 
             - name: Run Hello World
               if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
               uses: actions/hello-world-javascript-action@main
               with:
                 who-to-greet: ${{ vars.GREET_NAME }}
-
-            - name: RunMAnual Dispatch Hello World
-              if: ${{ vars.GITHUB_EVENT_NAME == 'workflow_dispatch' }}
-              uses: actions/hello-world-javascript-action@main
-              with:
-                who-to-greet: ${{ inputs.Who-to-Greet }}
