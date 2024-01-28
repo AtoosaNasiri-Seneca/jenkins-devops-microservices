@@ -32,7 +32,7 @@ jobs:
                     echo "variable from shell environment : ${{ env.my-env-variable }}"
                     echo "runner variable direct reference: $First_var"
                     echo "context referencing ${{ env.First_var}}"
-                    echo "The name of the event that triggered the workflow  ${{ vars.GITHUB_EVENT_NAME}}"
+                    echo "The name of the event that triggered the workflow  ${{ vars.GITHUB_EVENT_NAME }}"
               env:
                     REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
                     ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
