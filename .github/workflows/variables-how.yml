@@ -19,18 +19,20 @@ env:
 jobs:
     display-variables:
         name: ${{ vars.JOB_NAME }}
+        if: ${{ vars.USE_VARIABLES == 'true' }}
         runs-on: ubuntu-latest
         environment: ${{ vars.ENVIRONMENT_STAGE }}
         steps:
             - name: Use Variables1
-              run: |
+              run: | 
                echo "repository variable : $REPOSITORY_VAR"
                echo "organizatin variable : $ORGANIZATION_VAR"
                echo "overridden variavle : $OVERIDDEN_VAR"
-               echo "variable frlm shell environment : $my-env-variable"
+               echo "variable from shell environment : ${{ env.my-env-variable }}"
                echo "runner variable direct reference: $First_var"
                echo "context referencing ${{ env.First_var}}"
               env:
                REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
                ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
                OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
+               REPO_NAME: ${{ vars.GITHUB_REPOSITORY }}
