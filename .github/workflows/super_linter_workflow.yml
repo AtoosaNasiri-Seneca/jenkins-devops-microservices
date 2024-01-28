@@ -60,9 +60,7 @@ jobs:
         run: |
           echo "$super_secret"
       - name: Run Scripts
-        env:
-          super_secret: ${{ secrets.SUPERSECRET }}
         run: |
           echo "This is a sample action"
           echo " This is super secrett, I do not think it will display ${{ env.super_secret }}"
-          ./caa900_logo.sh
+          ./csp451_logo.sh
