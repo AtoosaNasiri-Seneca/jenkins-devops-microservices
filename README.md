@@ -1,11 +1,21 @@
-[![Gem Version](https://badge.fury.io/rb/overcommit.svg)](https://badge.fury.io/rb/overcommit)
-[![Build Status](https://github.com/sds/overcommit/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/sds/overcommit/actions/workflows/tests.yml/badge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/sds/overcommit/badge.svg?branch=master)](https://coveralls.io/github/sds/overcommit?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/5da42f7f365e5fef6b4c/maintainability)](https://codeclimate.com/github/sds/overcommit/maintainability)
-[![Inline docs](http://inch-ci.org/github/sds/overcommit.svg?branch=master)](http://inch-ci.org/github/sds/overcommit)
+<!-- markdownlint-disable MD013 MD033 MD034 -->
+# NPM GROOVY LINT (+ Format & Auto-fix)
+
+[![Version](https://img.shields.io/npm/v/npm-groovy-lint.svg)](https://npmjs.org/package/npm-groovy-lint)
+[![Downloads/week](https://img.shields.io/npm/dw/npm-groovy-lint.svg)](https://npmjs.org/package/npm-groovy-lint)
+[![Downloads/total](https://img.shields.io/npm/dt/npm-groovy-lint.svg)](https://npmjs.org/package/npm-groovy-lint)
+[![Test](https://github.com/nvuillam/npm-groovy-lint/workflows/Test/badge.svg?branch=master)](https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3ATest+branch%3Amaster)
+[![codecov](https://codecov.io/gh/nvuillam/npm-groovy-lint/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/npm-groovy-lint)
+[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/actions/workflows/mega-linter.yml/badge.svg?branch=main)](https://github.com/nvuillam/npm-groovy-lint/actions/workflows/mega-linter.yml)
+[![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/npm-groovy-lint.svg)](https://gitHub.com/nvuillam/npm-groovy-lint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?label=Star&maxAge=2592000)](https://GitHub.com/nvuillam/npm-groovy-lint/stargazers/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/npm-groovy-lint)](https://hub.docker.com/r/nvuillam/npm-groovy-lint)
+[![Docker Stars](https://img.shields.io/docker/stars/nvuillam/npm-groovy-lint)](https://hub.docker.com/r/nvuillam/npm-groovy-lint)
+[![License](https://img.shields.io/npm/l/npm-groovy-lint.svg)](https://github.com/nvuillam/npm-groovy-lint/blob/master/package.json)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/sds/overcommit/master/logo/horizontal.png" width="65%" alt="Overcommit Logo"/>
+  <img src="./devops.png" width="65%" alt="Another DevOps Image"/>
 </p>
 
 # jenkins-devops-microservices
