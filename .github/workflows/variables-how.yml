@@ -43,3 +43,9 @@ jobs:
               uses: actions/hello-world-javascript-action@main
               with:
                 who-to-greet: ${{ vars.GREET_NAME }}
+
+            - name: RunMAnual Dispatch Hello World
+              if: ${{ vars.GITHUB_EVENT_NAME == 'workflow_dispatch' }}
+              uses: actions/hello-world-javascript-action@main
+              with:
+                who-to-greet: ${{ inputs.Who-to-Greet }}
