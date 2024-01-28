@@ -16,11 +16,17 @@ env:
 jobs:
   super-linter:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       - name: Retrieve secret
         env:
           super_secret: ${{ secrets.SUPERSECRET }}
@@ -33,16 +39,12 @@ jobs:
           echo "This is a sample action"
           echo " This is super secrett, I do not think it will display ${{ env.super_secret }}"
           ./caa900_logo.sh
-      - name: Validate YAML Schema
-        uses: nwisbeta/validate-yaml-schema@v1.0.3
-        with:
-          yamlSchemasJson: |
-            {
-                "http://json.schemastore.org/composer": ["/*"],
-                "file:///home/johnd/some-schema.json": ["some.yaml"],
-                "../relative/path/schema.json": ["/config*.yaml"],
-                "/Users/johnd/some-schema.json": ["some.yaml"],
-            }
+      - name: Super-linter
+        uses: super-linter/super-linter@v5.7.2  # x-release-please-version
+        env:
+          DEFAULT_BRANCH: main
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # Path: seneca/jenkins-devops-microservices/.github/labeler.yml
 # This is a basic configuration file with a single label
 # that will be applied to all issues and pull requests.
