@@ -3,7 +3,7 @@ name: new-issue-automation
 on:
   push:
     branches:
-    - main
+    - super-linter
 
 defaults:
   run:
