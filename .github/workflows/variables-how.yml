@@ -25,6 +25,7 @@ jobs:
         steps:
             - name: Use Variables1
               run: | 
+               echo " running job ${{ vars.JOB_NAME }}"
                echo "repository variable : $REPOSITORY_VAR"
                echo "organizatin variable : $ORGANIZATION_VAR"
                echo "overridden variavle : $OVERIDDEN_VAR"
@@ -36,3 +37,9 @@ jobs:
                ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
                OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
                REPO_NAME: ${{ vars.GITHUB_REPOSITORY }}
+
+            - name: Run Hello World
+              if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
+              uses: actions/hello-world-javascript-action@main
+              with:
+                who-to-greet: ${{ env.GREET_NAME }}
