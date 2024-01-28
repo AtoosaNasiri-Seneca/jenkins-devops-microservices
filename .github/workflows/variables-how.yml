@@ -1,10 +1,10 @@
 name: Experiment Variables
 
 on:
-    push:
-        branches:
-            - main
-            - dev-workflows
+    # push:
+    #     branches:
+    #         - main
+    #         - dev-workflows
     workflow_dispatch:
         inputs:
             Who-to-Greet:
