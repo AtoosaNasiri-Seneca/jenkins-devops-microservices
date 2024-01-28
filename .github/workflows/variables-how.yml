@@ -19,9 +19,8 @@ env:
 jobs:
     display-variables:
         name: ${{ vars.JOB_NAME }}
-        # if: ${{ vars.USE_VARIABLES == 'true' }}
         runs-on: ubuntu-latest
-        environment: ${{ vars.ENVIROMENT_STAGE }}
+        environment: ${{ vars.ENVIRONMENT_STAGE }}
         steps:
             - name: Use Variables1
               run: |
