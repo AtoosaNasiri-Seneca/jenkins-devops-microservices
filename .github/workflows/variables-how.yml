@@ -14,11 +14,12 @@ on:
                 type: string
 env:
     my-env-variable: ${{ vars.ENV_CONTEXT_VAR }}
+    Frist-var: "Codespace Viraspace"
 
 jobs:
     display-variables:
         name: ${{ vars.JOB_NAME }}
-        if: ${{ vars.USE_VARIABLES == 'true' }}
+        # if: ${{ vars.USE_VARIABLES == 'true' }}
         runs-on: ubuntu-latest
         environment: ${{ vars.ENVIROMENT_STAGE }}
         steps:
@@ -28,12 +29,14 @@ jobs:
                echo "organizatin variable : $ORGANIZATION_VAR"
                echo "overridden variavle : $OVERIDDEN_VAR"
                echo "variable frlm shell environment : $my-env-variable"
+               echo "runner variable direct reference: $First-var"
+               echo "context referencing ${{ env.Frist-var}}"
               env:
                REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
                ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
                OVERIDDEN_VAR: ${{ vars.OVERRIDDEN_VAR }}
             - name: ${{ vars.HELLo_WORLD_STEP }}
-              if: ${{ vars.HELLo_WORLD_STEP == 'true' }}
+              if: ${{ vars.HELLO_WORLD_STEP == 'true' }}
               uses: actions/hello-world-javascrcipt-action@main
               with:
                 who-to-greet: ${{ vars.GREET_NAME }}
