@@ -52,6 +52,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: CAA900 Logo
         run: |
           echo "This is a sample action"
